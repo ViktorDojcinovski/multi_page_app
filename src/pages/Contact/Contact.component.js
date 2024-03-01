@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 // const component = 'Component';
 // `My ${component}` -- 'My ' + component;
@@ -18,10 +19,18 @@ const Description = styled.p`
 `;
 
 const Contact = () => {
+  // Frontend 70
+  const history = useHistory();
+
+  const onClickHandler = () => {
+    history.goBack();
+  };
+
   return (
     <div>
       <Title>Contact</Title>
       <Description>Send us a message!</Description>
+      <button onClick={onClickHandler}>Go back!</button>
     </div>
   );
 };
