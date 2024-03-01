@@ -3,6 +3,8 @@ import styled from "styled-components";
 // const component = 'Component';
 // `My ${component}` -- 'My ' + component;
 
+// ### Frontend 69 ###
+
 const Title = styled.h1`
   font-size: 1.5em;
   text-align: center;
