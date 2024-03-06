@@ -1,7 +1,15 @@
+import styled from "styled-components";
+
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: ${(props) => props.theme.primary};
+`;
+
 const About = () => {
   return (
     <div>
-      <h1 className="bg-primary">About</h1>
+      <Title>About</Title>
       <p>This is the about page</p>
     </div>
   );

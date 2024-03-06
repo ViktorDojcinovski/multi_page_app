@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="header_wrapper">
+      <div className="header_wrapper bg-primary">
         {/* Frontend 70 */}
         <Link to="about" className={isActive("/about") ? "active" : ""}>
           About
