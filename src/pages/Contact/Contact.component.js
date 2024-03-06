@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useContext } from "react";
-import { AppContext } from "../../contexts/AppContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 // const component = 'Component';
 // `My ${component}` -- 'My ' + component;
@@ -20,14 +20,24 @@ const Description = styled.p`
   color: #000;
 `;
 
-const Contact = () => {
-  const appContext = useContext(AppContext);
+const Button = styled.button`
+  background-color: ${(props) => (props.th === "light" ? "#eee" : "#222")};
+  color: ${(props) => (props.th === "light" ? "#222" : "#eee")};
+  border: 1px solid black;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-left: 50%;
+  transform: translate(-50%);
+`;
 
-  console.log("appContext", appContext);
+const Contact = () => {
+  const { theme } = useContext(ThemeContext);
+
   // Frontend 70
   const history = useHistory();
 
   const onClickHandler = () => {
+    // history.push("/products");
     history.goBack();
   };
 
@@ -35,7 +45,9 @@ const Contact = () => {
     <div>
       <Title>Contact</Title>
       <Description>Send us a message!</Description>
-      <button onClick={onClickHandler}>Go back!</button>
+      <Button onClick={onClickHandler} th={theme}>
+        Go back!
+      </Button>
     </div>
   );
 };

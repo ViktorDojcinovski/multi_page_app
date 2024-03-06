@@ -4,19 +4,19 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import { theme } from "./theme";
-import { AppProvider } from "./contexts/AppContext";
+import { ThemeProvider as CustomThemeProvider } from "./contexts/ThemeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <AppProvider>
+      <StyledThemeProvider theme={theme}>
+        <CustomThemeProvider>
           <App />
-        </AppProvider>
-      </ThemeProvider>
+        </CustomThemeProvider>
+      </StyledThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

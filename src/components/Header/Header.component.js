@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { /* NavLink, */ Link, useLocation } from "react-router-dom";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 import "./Header.styles.css";
 
@@ -6,6 +8,8 @@ import "./Header.styles.css";
 
 const Header = () => {
   const location = useLocation();
+  // const themeContext = useContext(ThemeContext);
+  const { toggleTheme } = useContext(ThemeContext);
 
   console.log("location", location);
 
@@ -15,6 +19,7 @@ const Header = () => {
 
   return (
     <>
+      <button onClick={toggleTheme}>Toggle Theme</button>
       <div className="header_wrapper bg-primary">
         {/* Frontend 70 */}
         <Link to="about" className={isActive("/about") ? "active" : ""}>
