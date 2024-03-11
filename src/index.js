@@ -7,6 +7,9 @@ import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import { theme } from "./theme";
 import { ThemeProvider as CustomThemeProvider } from "./contexts/ThemeContext";
+import { Provider } from "react-redux";
+
+import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +17,9 @@ root.render(
     <BrowserRouter>
       <StyledThemeProvider theme={theme}>
         <CustomThemeProvider>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </CustomThemeProvider>
       </StyledThemeProvider>
     </BrowserRouter>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { useSelector } from "react-redux";
 
 // const component = 'Component';
 // `My ${component}` -- 'My ' + component;
@@ -36,6 +37,10 @@ const Contact = () => {
   // Frontend 70
   const history = useHistory();
 
+  const counter = useSelector((state) => state.counter);
+
+  console.log("counter", counter);
+
   const onClickHandler = () => {
     // history.push("/products");
     history.goBack();
@@ -48,6 +53,9 @@ const Contact = () => {
       <Button onClick={onClickHandler} th={theme}>
         Go back!
       </Button>
+      <div>
+        <p>Counter: {counter}</p>
+      </div>
     </div>
   );
 };
