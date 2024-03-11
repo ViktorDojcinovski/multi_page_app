@@ -10,7 +10,7 @@ const rootreducer = (state = initialState, action) => {
       return { counter: state.counter - 1 };
     default:
       console.log("state", state);
-      return { state };
+      return state;
   }
 };
 
