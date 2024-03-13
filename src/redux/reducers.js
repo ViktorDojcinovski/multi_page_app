@@ -1,17 +1,33 @@
-const initialState = {
-  counter: 1,
+import { actionTypes } from "./actionTypes";
+
+const initialStateCounter = {
+  counter: 0,
 };
 
-const rootreducer = (state = initialState, action) => {
+const counterReducer = (state = initialStateCounter, action) => {
   switch (action.type) {
-    case "INCREMENT":
+    case actionTypes.INCREMENT:
       return { counter: state.counter + 1 };
-    case "DECREMENT":
+    case actionTypes.DECREMENT:
       return { counter: state.counter - 1 };
     default:
-      console.log("state", state);
       return state;
   }
 };
 
-export default rootreducer;
+const initialStateAuth = {
+  isAuthenticated: false,
+};
+
+const authReducer = (state = initialStateAuth, action) => {
+  switch (action.type) {
+    case actionTypes.LOGIN:
+      return { isAuthenticated: true };
+    case actionTypes.LOGOUT:
+      return { isAuthenticated: false };
+    default:
+      return state;
+  }
+};
+
+export { counterReducer, authReducer };

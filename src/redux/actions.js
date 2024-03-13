@@ -1,7 +1,19 @@
-export const increment = () => ({
-  type: "INCREMENT",
+import { actionTypes } from "./actionTypes";
+
+const increment = () => ({
+  type: actionTypes.INCREMENT,
 });
 
-export const decrement = () => ({
-  type: "DECREMENT",
+const decrement = () => ({
+  type: actionTypes.DECREMENT,
 });
+
+const login = () => ({
+  type: actionTypes.LOGIN,
+});
+
+const logout = () => ({
+  type: actionTypes.LOGOUT,
+});
+
+export { increment, decrement, login, logout };

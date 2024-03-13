@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useContext } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { useSelector } from "react-redux";
+import { increment, decrement } from "../../redux/actions";
 
 // const component = 'Component';
 // `My ${component}` -- 'My ' + component;
@@ -37,7 +39,8 @@ const Contact = () => {
   // Frontend 70
   const history = useHistory();
 
-  const counter = useSelector((state) => state.counter);
+  const counter = useSelector((state) => state.counter.counter); // --> counter: 0
+  const dispatch = useDispatch();
 
   console.log("counter", counter);
 
@@ -54,7 +57,9 @@ const Contact = () => {
         Go back!
       </Button>
       <div>
-        <p>Counter: {counter}</p>
+        <Description>Counter: {counter}</Description>
+        <Button onClick={() => dispatch(increment())}>Increment</Button>
+        <Button onClick={() => dispatch(decrement())}>Decrement</Button>
       </div>
     </div>
   );
