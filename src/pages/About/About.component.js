@@ -1,7 +1,10 @@
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { fetchPosts } from "../../redux/thunks";
 
 const Title = styled.h1`
   font-size: 1.5em;
@@ -28,6 +31,12 @@ const Button = styled.button`
 const About = () => {
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
+  const dispatch = useDispatch();
+
+  // componentDidMount
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [dispatch]);
 
   const onClickHandler = () => {
     history.goForward();

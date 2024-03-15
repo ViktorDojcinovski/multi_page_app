@@ -30,4 +30,38 @@ const authReducer = (state = initialStateAuth, action) => {
   }
 };
 
-export { counterReducer, authReducer };
+const initialStatePosts = {
+  loading: false,
+  data: [],
+  error: false,
+};
+
+// { type: 'FETCH', payload: data }
+
+const postsReducer = (state = initialStatePosts, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case actionTypes.FETCH_POSTS_START:
+      return {
+        ...state,
+        loading: true,
+      };
+    case actionTypes.FETCH_POSTS_SUCCESS:
+      return {
+        ...state,
+        data: payload,
+        loading: false,
+      };
+    case actionTypes.FETCH_POSTS_FAILURE:
+      return {
+        ...state,
+        error: true,
+        loading: false,
+      };
+    default:
+      return state;
+  }
+};
+
+export { counterReducer, authReducer, postsReducer };

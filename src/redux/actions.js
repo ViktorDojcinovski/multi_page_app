@@ -16,4 +16,25 @@ const logout = () => ({
   type: actionTypes.LOGOUT,
 });
 
-export { increment, decrement, login, logout };
+const fetchPostsStart = () => ({
+  type: actionTypes.FETCH_POSTS_START,
+});
+
+const fetchPostsSuccess = (data) => ({
+  type: actionTypes.FETCH_POSTS_SUCCESS,
+  payload: data,
+});
+
+const fetchPostsFailure = () => ({
+  type: actionTypes.FETCH_POSTS_FAILURE,
+});
+
+export {
+  increment,
+  decrement,
+  login,
+  logout,
+  fetchPostsStart,
+  fetchPostsSuccess,
+  fetchPostsFailure,
+};
