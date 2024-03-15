@@ -37,7 +37,7 @@ const initialStatePosts = {
 };
 
 // { type: 'FETCH', payload: data }
-
+// Frontend 75
 const postsReducer = (state = initialStatePosts, action) => {
   const { type, payload } = action;
 

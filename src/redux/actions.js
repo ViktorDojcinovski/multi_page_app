@@ -16,6 +16,7 @@ const logout = () => ({
   type: actionTypes.LOGOUT,
 });
 
+// Frontend 75
 const fetchPostsStart = () => ({
   type: actionTypes.FETCH_POSTS_START,
 });
