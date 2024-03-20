@@ -33,7 +33,7 @@ const authReducer = (state = initialStateAuth, action) => {
 const initialStatePosts = {
   loading: false,
   data: [],
-  error: false,
+  error: null,
 };
 
 // { type: 'FETCH', payload: data }
@@ -46,17 +46,19 @@ const postsReducer = (state = initialStatePosts, action) => {
       return {
         ...state,
         loading: true,
+        error: null,
       };
     case actionTypes.FETCH_POSTS_SUCCESS:
       return {
         ...state,
         data: payload,
         loading: false,
+        error: null,
       };
     case actionTypes.FETCH_POSTS_FAILURE:
       return {
         ...state,
-        error: true,
+        error: action.payload,
         loading: false,
       };
     default:

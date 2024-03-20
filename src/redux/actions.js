@@ -26,8 +26,9 @@ const fetchPostsSuccess = (data) => ({
   payload: data,
 });
 
-const fetchPostsFailure = () => ({
+const fetchPostsFailure = (message) => ({
   type: actionTypes.FETCH_POSTS_FAILURE,
+  payload: message,
 });
 
 export {

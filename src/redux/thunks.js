@@ -1,14 +1,30 @@
-import { fetchPostsStart, fetchPostsSuccess } from "./actions";
+import {
+  fetchPostsStart,
+  fetchPostsSuccess,
+  fetchPostsFailure,
+} from "./actions";
 // Frontend 75
 export const fetchPosts = () => {
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch(fetchPostsStart());
+    // 1. async-await
+    // 2. chaining 'then' methods
 
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const data = await response.data;
+    fetch("https://jsonplaceholder.typicode.com/posts") // 200 ?? 404...
+      .then((response) => {
+        if (response.status !== 200) {
+          throw Error("Error fetching posts.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        dispatch(fetchPostsSuccess(data));
+      })
+      .catch((e) => {
+        console.log("error", e);
+        dispatch(fetchPostsFailure(e));
+      });
 
-    dispatch(fetchPostsSuccess(data));
-
-    // dispatch(fetchPostsFailure())
+    // async await --> try-catch
   };
 };

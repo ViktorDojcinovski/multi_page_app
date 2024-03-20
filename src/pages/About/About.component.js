@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { fetchPosts } from "../../redux/thunks";
@@ -28,10 +28,15 @@ const Button = styled.button`
   transform: translate(-50%);
 `;
 
+// (boolean) ? value_1 : value_2
+
 const About = () => {
   const history = useHistory();
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts.data);
+  const loading = useSelector((state) => state.posts.loading);
+  const error = useSelector((state) => state.posts.error);
 
   // componentDidMount
   useEffect(() => {
@@ -49,6 +54,19 @@ const About = () => {
       <Button onClick={onClickHandler} th={theme}>
         Go forward!
       </Button>
+      <div>
+        {loading
+          ? "loading"
+          : error
+          ? error.message
+          : posts.map((item) => {
+              return (
+                <>
+                  <p>{item.title}</p>
+                </>
+              );
+            })}
+      </div>
     </div>
   );
 };
